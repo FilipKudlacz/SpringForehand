@@ -1,0 +1,19 @@
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>City</th>
+      <th>Postal code</th>
+      <th>Street</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let location of locations | paginate: { itemsPerPage: 10, currentPage: p }">
+      <td>{{ location.country}}</td>
+      <td>{{ location.city }}</td>
+      <td>{{ location.postalCode }}</td>
+      <td>{{ location.street }}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event" style="text-align: center"></pagination-controls>

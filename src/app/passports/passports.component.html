@@ -1,0 +1,17 @@
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Serial number</th>
+      <th>Nationality</th>
+      <th>expirationDate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let passport of passports | paginate: { itemsPerPage: 10, currentPage: p }">
+      <td>{{ passport.serialNumber }}</td>
+      <td>{{ passport.nationality }}</td>
+      <td>{{ passport.expirationDate }}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event" style="text-align: center"></pagination-controls>

@@ -1,0 +1,17 @@
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let department of departments | paginate: { itemsPerPage: 10, currentPage: p }">
+      <td>department.name</td>
+      <td>department.location.country</td>
+      <td>department.location.city</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event" style="text-align: center"></pagination-controls>

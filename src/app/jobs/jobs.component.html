@@ -1,0 +1,17 @@
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Min salary</th>
+      <th>Max salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let job of jobs | paginate: { itemsPerPage: 10, currentPage: p }">
+      <td>{{ job.title }}</td>
+      <td>{{ job.minSalary }}</td>
+      <td>{{ job.maxSalary }}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event" style="text-align: center"></pagination-controls>
