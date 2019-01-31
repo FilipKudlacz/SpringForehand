@@ -115,15 +115,15 @@ export class DatabaseService {
 
   loadLocations() {
     this.http.get<Location[]>(this.serverAddress + '/locations').subscribe((data) => {
-      this.dataStore.locations = data;
-      this._locations.next(Object.assign({}, this.dataStore).locations);
+      this.loadLocations();
+      //this.dataStore.locations = data;
+      //this._locations.next(Object.assign({}, this.dataStore).locations);
     });
   }
 
   createLocation(location: Location) {
     this.http.post(this.serverAddress + '/location', location).subscribe();
-    this.dataStore.locations.push(location);
-    this._locations.next(Object.assign({}, this.dataStore).locations);
+    this.loadLocations();
   }
 
   removeLocation(location: Location) {
