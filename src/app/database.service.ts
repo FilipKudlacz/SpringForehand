@@ -127,7 +127,7 @@ export class DatabaseService {
   }
 
   removeLocation(location: Location) {
-    this.http.delete(this.serverAddress + '/location' + location.id).subscribe();
+    this.http.delete(this.serverAddress + '/location/' + location.id).subscribe();
     this.dataStore.locations.forEach((currentLocation, index) => {
       if(location.id == currentLocation.id) {
         this.dataStore.locations.splice(index, 1);
