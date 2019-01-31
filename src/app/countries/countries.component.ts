@@ -28,5 +28,6 @@ export class CountriesComponent implements OnInit {
 
   removeCountry(country: Country) {
     this.database.removeCountry(country);
+    this.newCountryName = null;
   }
 }
