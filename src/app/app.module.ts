@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@Angular/common/http';
+import { FormsModule } from '@Angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +29,8 @@ import { PassportsComponent } from './passports/passports.component';
     BrowserModule,
     AppRoutingModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
