@@ -24,7 +24,6 @@ export class CountriesComponent implements OnInit {
     let newCountry = new Country(this.newCountryName);
     this.database.createCountry(newCountry);    
     this.newCountryName = null;
-    this.database.loadCountries();
   }
 
   removeCountry(country: Country) {
