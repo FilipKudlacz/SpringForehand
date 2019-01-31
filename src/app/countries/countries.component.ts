@@ -22,11 +22,10 @@ export class CountriesComponent implements OnInit {
 
   addCountry() {
     let newCountry = new Country(this.newCountryName);
-    console.log(newCountry);
     this.database.createCountry(newCountry);
   }
 
   removeCountry(country: Country) {
-    
+    this.database.removeCountry(country);
   }
 }

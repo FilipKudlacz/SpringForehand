@@ -110,14 +110,30 @@ export class DatabaseService {
     this.http.get<Job[]>(this.serverAddress + '/jobs').subscribe((data) => {
       this.dataStore.jobs = data;
       this._jobs.next(Object.assign({}, this.dataStore).jobs);
-    })
+    });
   }
 
   loadLocations() {
     this.http.get<Location[]>(this.serverAddress + '/locations').subscribe((data) => {
       this.dataStore.locations = data;
       this._locations.next(Object.assign({}, this.dataStore).locations);
-    })
+    });
+  }
+
+  createLocation(location: Location) {
+    this.http.post(this.serverAddress + '/location', location).subscribe();
+    this.dataStore.locations.push(location);
+    this._locations.next(Object.assign({}, this.dataStore).locations);
+  }
+
+  removeLocation(location: Location) {
+    this.http.delete(this.serverAddress + '/location' + location.id).subscribe();
+    this.dataStore.locations.forEach((currentLocation, index) => {
+      if(location.id == currentLocation.id) {
+        this.dataStore.locations.splice(index, 1);
+      }
+    });
+    this._locations.next(Object.assign({}, this.dataStore).locations);
   }
 
   loadPassports() {

@@ -9,11 +9,28 @@
   </thead>
   <tbody>
     <tr *ngFor="let location of locations | paginate: { itemsPerPage: 10, currentPage: p }">
-      <td>{{ location.country}}</td>
+      <td>{{ location.country.name }}</td>
       <td>{{ location.city }}</td>
       <td>{{ location.postalCode }}</td>
-      <td>{{ location.street }}</td>
+      <td>{{ location.street }}<i class="trash icon" style="float: right; cursor: pointer;" (click)="removeLocation(location)"></i></td>
     </tr>
   </tbody>
 </table>
 <pagination-controls (pageChange)="p = $event" style="text-align: center"></pagination-controls>
+<div class="ui grid" style="margin: 50px">
+  <div class="row">
+      <select [(ngModel)]="selectedCountry">
+        <option *ngFor="let country of countries" [ngValue]="country">{{ country.name }}</option>
+      </select>
+    <div class="ui input">
+      <input type="text" placeholder="City" [(ngModel)]="newCityName">
+    </div>
+    <div class="ui input">
+      <input type="text" placeholder="Street" [(ngModel)]="newStreet">
+    </div>
+    <div class="ui input">
+      <input type="text" placeholder="Postal code" [(ngModel)]="newPostalCode">
+    </div>
+    <div (click)="onSubmit()" class="ui button">Add</div>
+  </div>
+</div>

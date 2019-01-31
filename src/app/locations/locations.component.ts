@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '../shared/models/location.model';
 import { DatabaseService } from '../database.service';
+import { Country } from '../shared/models/country.model';
 
 @Component({
   selector: 'app-locations',
@@ -9,8 +10,13 @@ import { DatabaseService } from '../database.service';
 })
 export class LocationsComponent implements OnInit {
   locations: Location[];
+  countries: Country[];
   
   constructor(private database: DatabaseService) { }
+  selectedCountry: Country;
+  newCityName: string;
+  newStreet: string;
+  newPostalCode: string;
 
   ngOnInit() {
     this.database.locations.subscribe((data) => {
@@ -19,4 +25,12 @@ export class LocationsComponent implements OnInit {
     this.database.loadLocations();
   }
 
+  onSubmit() {
+    let newLocation = new Location(this.selectedCountry, this.newCityName, this.newStreet, this.newPostalCode);
+    this.database.createLocation(newLocation);
+  }
+
+  removeLocation(location: Location) {
+    this.database.removeLocation(location);
+  }
 }
