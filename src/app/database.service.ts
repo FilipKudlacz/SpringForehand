@@ -85,8 +85,9 @@ export class DatabaseService {
 
   createCountry(country: Country) {
     this.http.post(this.serverAddress + '/country', country).subscribe();
-    this.dataStore.countries.push(country);
-    this._countries.next(Object.assign({}, this.dataStore).countries);
+    this.loadCountries();
+    //this.dataStore.countries.push(country);
+    //this._countries.next(Object.assign({}, this.dataStore).countries);
   }
 
   removeCountry(country: Country) {
@@ -115,9 +116,8 @@ export class DatabaseService {
 
   loadLocations() {
     this.http.get<Location[]>(this.serverAddress + '/locations').subscribe((data) => {
-      this.loadLocations();
-      //this.dataStore.locations = data;
-      //this._locations.next(Object.assign({}, this.dataStore).locations);
+      this.dataStore.locations = data;
+      this._locations.next(Object.assign({}, this.dataStore).locations);
     });
   }
 
