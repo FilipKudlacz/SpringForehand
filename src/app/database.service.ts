@@ -90,7 +90,7 @@ export class DatabaseService {
   }
 
   removeCountry(country: Country) {
-    this.http.delete(this.serverAddress + '/country' + country.id).subscribe();
+    this.http.delete(this.serverAddress + '/country/' + country.id).subscribe();
     this.dataStore.countries.forEach((currentCountry, index) => {
       if(country.id == currentCountry.id) {
         this.dataStore.countries.splice(index, 1);
