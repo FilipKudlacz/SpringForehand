@@ -30,14 +30,4 @@ export class CountriesComponent implements OnInit {
   removeCountry(country: Country) {
     
   }
-
-  addCountry() {
-    let newCountry = new Country(this.newCountryName);
-    console.log(newCountry);
-    this.database.createCountry(newCountry);
-  }
-
-  removeCountry(country: Country) {
-    
-  }
 }
