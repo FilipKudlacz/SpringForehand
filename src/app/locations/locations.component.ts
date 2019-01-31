@@ -32,6 +32,8 @@ export class LocationsComponent implements OnInit {
   onSubmit() {
     let newLocation = new Location(this.selectedCountry, this.newCityName, this.newStreet, this.newPostalCode);
     this.database.createLocation(newLocation);
+    console.log(newLocation);
+    this.database.loadLocations();
   }
 
   removeLocation(location: Location) {
