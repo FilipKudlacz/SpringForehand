@@ -22,6 +22,10 @@ export class LocationsComponent implements OnInit {
     this.database.locations.subscribe((data) => {
       this.locations = data;
     });
+    this.database.countries.subscribe((data) => {
+      this.countries = data;
+    });
+    this.database.loadCountries();
     this.database.loadLocations();
   }
 
