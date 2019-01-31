@@ -33,6 +33,10 @@ export class LocationsComponent implements OnInit {
     let newLocation = new Location(this.selectedCountry, this.newCityName, this.newStreet, this.newPostalCode);
     this.database.createLocation(newLocation);
     console.log(newLocation);
+    this.newCityName = null;
+    this.newPostalCode = null;
+    this.newStreet = null;
+    this.selectedCountry = null;
     this.database.loadLocations();
   }
 
