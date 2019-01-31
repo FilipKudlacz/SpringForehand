@@ -9,6 +9,7 @@ import { DatabaseService } from '../database.service';
 })
 export class CountriesComponent implements OnInit {
   countries: Country[];
+  newCountryName: string;
   
   constructor(private database: DatabaseService) { }
 
@@ -17,5 +18,15 @@ export class CountriesComponent implements OnInit {
       this.countries = data;
     });
     this.database.loadCountries();
+  }
+
+  addCountry() {
+    let newCountry = new Country(this.newCountryName);
+    console.log(newCountry);
+    this.database.createCountry(newCountry);
+  }
+
+  removeCountry(country: Country) {
+    
   }
 }

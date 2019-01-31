@@ -83,6 +83,22 @@ export class DatabaseService {
     })
   }
 
+  createCountry(country: Country) {
+    this.http.post(this.serverAddress + '/country', country).subscribe();
+    this.dataStore.countries.push(country);
+    this._countries.next(Object.assign({}, this.dataStore).countries);
+  }
+
+  removeCountry(country: Country) {
+    this.http.delete(this.serverAddress + '/country' + country.id).subscribe();
+    this.dataStore.countries.forEach((currentCountry, index) => {
+      if(country.id == currentCountry.id) {
+        this.dataStore.countries.splice(index, 1);
+      }
+    });
+    this._countries.next(Object.assign({}, this.dataStore).countries);
+  }
+
   loadDepartments() {
     this.http.get<Department[]>(this.serverAddress + '/departments').subscribe((data) => {
       this.dataStore.departments = data;

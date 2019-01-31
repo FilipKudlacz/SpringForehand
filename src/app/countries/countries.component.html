@@ -6,8 +6,16 @@
   </thead>
   <tbody>
     <tr *ngFor="let country of countries | paginate: { itemsPerPage: 10, currentPage: p }">
-      <td>{{ country.name }}</td>
+      <td>{{ country.name }}<i class="trash icon" style="float: right; cursor: pointer;" (click)="removeCountry(country)"></i></td>
     </tr>
   </tbody>
 </table>
 <pagination-controls (pageChange)="p = $event" style="text-align: center"></pagination-controls>
+<div class="ui grid" style="margin: 50px">
+  <div class="row">
+    <div class="ui input">
+      <input type="text" placeholder="Name" [(ngModel)]="newCountryName">
+    </div>
+    <div (click)="addCountry()" class="ui button">Add</div>
+  </div>
+</div>
