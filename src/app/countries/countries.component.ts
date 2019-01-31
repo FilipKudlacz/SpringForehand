@@ -17,5 +17,6 @@ export class CountriesComponent implements OnInit {
       this.countries = data;
     });
     this.database.loadCountries();
+    console.log(this.countries);
   }
 }
