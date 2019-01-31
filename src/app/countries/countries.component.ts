@@ -18,16 +18,16 @@ export class CountriesComponent implements OnInit {
       this.countries = data;
     });
     this.database.loadCountries();
-    console.log(this.countries);
   }
 
   addCountry() {
     let newCountry = new Country(this.newCountryName);
-    this.database.createCountry(newCountry);
+    this.database.createCountry(newCountry);    
+    this.newCountryName = null;
+    this.database.loadCountries();
   }
 
   removeCountry(country: Country) {
     this.database.removeCountry(country);
-    this.newCountryName = null;
   }
 }
